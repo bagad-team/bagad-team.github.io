@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAGAD - Trustworthy Open Source</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0f3c68; /* Inria/Academic Blue */
+            --accent-red: #dc3545;    /* From PDF logo path */
+            --accent-teal: #20c997;   /* From PDF logo dots */
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding-top: 50px; /* Space for the draft banner */
+        }
+
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* --- DRAFT BANNER --- */
+        #draft-banner {
+            background-color: #ffc107;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.9rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1050;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            top: 40px; /* Push down by banner height */
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+        .nav-link {
+            color: #555;
+            font-weight: 500;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a5c9e 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg-overlay {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-image: url('https://images.unsplash.com/photo-1558494949-efc527651060?auto=format&fit=crop&q=80');
+            opacity: 0.1;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- CARDS & AXES --- */
+        .research-card {
+            border: none;
+            transition: transform 0.3s;
+            height: 100%;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-blue);
+        }
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .icon-box {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .c-1 { color: var(--primary-blue); border-color: var(--primary-blue) !important; }
+        .c-2 { color: var(--accent-red); border-color: var(--accent-red) !important; }
+        .c-3 { color: var(--accent-teal); border-color: var(--accent-teal) !important; }
+
+        /* --- PODCAST SECTION --- */
+        .podcast-section {
+            background-color: var(--light-gray);
+            border-left: 10px solid var(--accent-teal);
+        }
+        .audio-player-wrapper {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* --- FOOTER / PARTNERS (Inspired by Diverse) --- */
+        .partners-strip {
+            background-color: #fff;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+        }
+        .partner-logo {
+            max-height: 60px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            filter: grayscale(100%);
+        }
+        .partner-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+        footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+        footer a { color: #fff; text-decoration: none; }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100">
+
+    <!-- DRAFT BANNER -->
+    <div id="draft-banner">
+        <i class="fas fa-hard-hat me-2"></i> WEBSITE UNDER CONSTRUCTION - DRAFT VERSION
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-share-nodes text-danger"></i> BAGAD
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Context</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#podcast">Podcast</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="hero-bg-overlay"></div>
+        <div class="container position-relative text-center">
+            <h1 class="display-3 fw-bold mb-3">Building Automated Guarantees for Application Defense</h1>
+            <p class="lead mb-4">Securing the Open Source Supply Chain, Repairing Code, and Enforcing Privacy.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+                <a href="#podcast" class="btn btn-danger btn-lg"><i class="fas fa-headphones me-2"></i> Listen to the Vision</a>
+            </div>
+            <p class="mt-4 text-white-50 small">Inria domain: Distributed Programming & Software Engineering</p>
+        </div>
+    </section>
+
+    <!-- CONTEXT / ABSTRACT -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="fw-bold mb-4">Trustworthy Open Source</h2>
+                    <p class="text-secondary">
+                        Open Source Software (OSS) constitutes the foundation of the modern digital economy. However, this ubiquitous integration has created a compelling vector for malicious actors. Modern systems are increasingly targeted through their OSS components, where the complex supply chain offers a strategic gateway for injecting malicious code.
+                    </p>
+                    <p>
+                        <strong>BAGAD</strong> addresses this vulnerability by proposing a holistic framework to secure the OSS lifecycle—from dependency analysis to web and mobile privacy enforcement.
+                    </p>
+                    <p class="fst-italic text-muted">
+                        "We position our work as a form of Digital Public Health, providing vaccines (automated repair) and diagnostics (auditing) for the digital commons."
+                    </p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <!-- Placeholder for visual representation of supply chain or code -->
+                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80" class="img-fluid rounded shadow-lg" alt="Code analysis">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH AXES -->
+    <section id="research" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Research Program</h2>
+                <p class="text-muted">Structured around three complementary axes</p>
+            </div>
+            <div class="row g-4">
+                <!-- Axis 1 -->
+                <div class="col-lg-4">
+                    <div class="card research-card c-1 h-100 p-4">
+                        <div class="text-center icon-box text-primary">
+                            <i class="fas fa-cubes-stacked"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">Supply Chain Security</h4>
+                        <p class="card-text text-secondary small">
+                            <strong>Objective:</strong> Guaranteeing the provenance, integrity, and compliance of open-source components.
+                        </p>
+                        <ul class="small text-secondary">
+                            <li>Secure SBOMs & Dependency Graphs</li>
+                            <li>Detection of Shadow Dependencies</li>
+                            <li>Sovereignty & Auditability</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Axis 2 -->
+                <div class="col-lg-4">
+                    <div class="card research-card c-2 h-100 p-4">
+                        <div class="text-center icon-box text-danger">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">Automated Repair</h4>
+                        <p class="card-text text-secondary small">
+                            <strong>Objective:</strong> Reduce "Time-to-Fix" by automating vulnerability discovery and patch generation using Hybrid AI.
+                        </p>
+                        <ul class="small text-secondary">
+                            <li>Neuro-Symbolic AI</li>
+                            <li>Self-Healing Code</li>
+                            <li>Dealing with Hallucinations</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Axis 3 -->
+                <div class="col-lg-4">
+                    <div class="card research-card c-3 h-100 p-4">
+                        <div class="text-center icon-box text-success">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">Privacy Enforcement</h4>
+                        <p class="card-text text-secondary small">
+                            <strong>Objective:</strong> Auditing and enforcing privacy properties in Web and Mobile applications.
+                        </p>
+                        <ul class="small text-secondary">
+                            <li>GDPR Compliance Checking</li>
+                            <li>Anti-Fingerprinting</li>
+                            <li>Data Leak Detection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PODCAST SECTION -->
+    <section id="podcast" class="py-5">
+        <div class="container">
+            <div class="podcast-section p-5 rounded shadow-sm">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <h2 class="fw-bold mb-3"><i class="fas fa-microphone-lines me-2"></i> Scientific Ambition</h2>
+                        <p class="lead">Listen to the team's vision.</p>
+                        <p>Discover how BAGAD bridges the gap between academic research and industrial reality to ensure compliance with emerging regulations like the <strong>Cyber Resilience Act</strong>.</p>
+                    </div>
+                    <div class="col-md-7">
+                        <!-- English Player -->
+                        <div class="audio-player-wrapper mb-3">
+                            <h6 class="text-uppercase text-muted fw-bold small"><i class="flag-icon fas fa-globe-americas me-1"></i> Presentation (English)</h6>
+                            <audio controls class="w-100 mt-2">
+                                <source src="assets/audio/L_Open_Source_face_aux_attaques_étatiques.m4a" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        
+                        <!-- French Player -->
+                        <div class="audio-player-wrapper">
+                            <h6 class="text-uppercase text-muted fw-bold small"><i class="flag-icon fas fa-globe-europe me-1"></i> Présentation (Français)</h6>
+                            <audio controls class="w-100 mt-2">
+                                <source src="assets/audio/Securing_Open_Source_Supply_Chains_Now.m4a" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section id="team" class="py-5">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-5">The Team</h2>
+            
+            <!-- Permanent Members -->
+            <div class="mb-5">
+                <h4 class="border-bottom pb-2 mb-4 text-primary">Permanent Members</h4>
+                <div class="row g-4">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light rounded-circle p-3 me-3 text-primary"><i class="fas fa-user-tie fa-lg"></i></div>
+                            <div>
+                                <h5 class="mb-0">Walter Rudametkin</h5>
+                                <small class="text-muted">Professor (Head), Univ Rennes / IUF</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light rounded-circle p-3 me-3 text-dark"><i class="fas fa-user fa-lg"></i></div>
+                            <div>
+                                <h5 class="mb-0">Olivier Barais</h5>
+                                <small class="text-muted">Professor, Univ Rennes</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light rounded-circle p-3 me-3 text-dark"><i class="fas fa-user fa-lg"></i></div>
+                            <div>
+                                <h5 class="mb-0">Olivier Zendra</h5>
+                                <small class="text-muted">Researcher, Inria</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light rounded-circle p-3 me-3 text-dark"><i class="fas fa-user fa-lg"></i></div>
+                            <div>
+                                <h5 class="mb-0">Stéphanie Challita</h5>
+                                <small class="text-muted">Associate Professor, Univ Rennes</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-light rounded-circle p-3 me-3 text-dark"><i class="fas fa-user fa-lg"></i></div>
+                            <div>
+                                <h5 class="mb-0">Aymeric Blot</h5>
+                                <small class="text-muted">Associate Professor, Univ Rennes</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Non-Permanent Members -->
+             <div class="mb-4">
+                <h4 class="border-bottom pb-2 mb-4 text-secondary">PhD Students & Engineers</h4>
+                <p class="small text-muted mb-3">A dedicated team of PhD students and Engineers working on HyperAST, Privacy Bugs, and Supply Chain analysis.</p>
+                <div class="row small">
+                    <div class="col-md-3 mb-2">Maïwenn Le Goasteller</div>
+                    <div class="col-md-3 mb-2">Sterenn Roux</div>
+                    <div class="col-md-3 mb-2">Camille Molinier</div>
+                    <div class="col-md-3 mb-2">Nicolo Cavalli</div>
+                    <div class="col-md-3 mb-2">Haitam El Hayani</div>
+                    <div class="col-md-3 mb-2">Lise Lahoche</div>
+                    <div class="col-md-3 mb-2">Malvin Chevallier</div>
+                    <div class="col-md-3 mb-2">Valere Billaud</div>
+                    <div class="col-md-3 mb-2">Alan Prado (Eng.)</div>
+                    <div class="col-md-3 mb-2">Mathieu Goessens (Eng.)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS STRIP (Diverse Style) -->
+    <section id="partners" class="partners-strip">
+        <div class="container">
+            <div class="text-center mb-4">
+                <span class="badge bg-secondary mb-2">Affiliations & Partners</span>
+                <p class="text-muted small">Collaborating with ANSSI, Software Heritage, and industry leaders.</p>
+            </div>
+            <div class="row justify-content-center align-items-center text-center gy-4">
+                <!-- Using Text placeholders styled as logos for demo purposes -->
+                <!-- In a real scenario, replace <h2> with <img> tags -->
+                <div class="col-6 col-md-2">
+                    <h3 class="fw-bold text-secondary opacity-50">Inria</h3>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h3 class="fw-bold text-secondary opacity-50">IRISA</h3>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h3 class="fw-bold text-secondary opacity-50">Univ Rennes</h3>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h3 class="fw-bold text-secondary opacity-50">CNRS</h3>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h5 class="fw-bold text-secondary opacity-50">Software<br>Heritage</h5>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h3 class="fw-bold text-secondary opacity-50">ANSSI</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <p class="mb-1">BAGAD Project &copy; 2025</p>
+            <p class="small text-muted mb-0">France: Inria, University of Rennes, CNRS</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
